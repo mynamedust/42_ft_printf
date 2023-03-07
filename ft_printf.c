@@ -3,27 +3,27 @@
 
 int	ft_typeprint(va_list *list, int c)
 {
-	int	number;
+	size_t	number;
 
 	number = 0;
 	switch (c)
 	{
-		case 'c' || :
+		case 'c':
 			number = ft_print_char(va_arg(*list, int));
 		case 's':
-			number = ft_print_str(va_arg(*list, char *));
+			number = (int)ft_print_str(va_arg(*list, char *));
 		case 'p':
-			// number = ft_print_char(va_arg(*list, int));
+			// number = ft_print_char(va_arg(*list, unsigned long));
 		case 'd':
-			number = ft_print_int(va_arg(*list, int));
+			number = (int)ft_print_int(va_arg(*list, int));
 		case 'i':
-			number = ft_print_int(va_arg(*list, int));
+			number = (int)ft_print_int(va_arg(*list, int));
 		case 'u':
-			number = ft_print_uint(va_arg(*list, unsigned int));
+			number = (int)ft_print_uint(va_arg(*list, unsigned int));
 		case 'x':
-			number = ft_print_hex(va_arg(*list, unsigned int));
+			number = (int)ft_print_hex(va_arg(*list, unsigned int));
 		case 'X':
-			number = ft_print_hex(va_arg(*list, unsigned int));
+			number = (int)ft_print_hex(va_arg(*list, unsigned int));
 		case '%':
 			number = ft_print_char('%');
 	}
