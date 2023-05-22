@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almeliky <almeliky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 18:31:07 by almeliky          #+#    #+#             */
-/*   Updated: 2023/03/07 18:31:07 by almeliky         ###   ########.fr       */
+/*   Created: 2023/02/25 20:25:11 by almeliky          #+#    #+#             */
+/*   Updated: 2023/02/25 20:25:11 by almeliky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_print_char(int c)
+int	ft_lstsize(t_list *lst)
 {
-	ft_putchar_fd(c, 1);
-	return (1);
-}
+	int	i;
 
-int	ft_print_str(char *str)
-{
-	if (str == NULL)
+	if (!lst)
+		return (0);
+	i = 1;
+	while (lst->next)
 	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
+		lst = lst->next;
+		i++;
 	}
-	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
+	return (i);
 }

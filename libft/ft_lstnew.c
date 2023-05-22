@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almeliky <almeliky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 18:31:07 by almeliky          #+#    #+#             */
-/*   Updated: 2023/03/07 18:31:07 by almeliky         ###   ########.fr       */
+/*   Created: 2023/02/25 19:03:42 by almeliky          #+#    #+#             */
+/*   Updated: 2023/02/25 19:03:42 by almeliky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_print_char(int c)
+t_list	*ft_lstnew(void *content)
 {
-	ft_putchar_fd(c, 1);
-	return (1);
-}
+	t_list	*list;
 
-int	ft_print_str(char *str)
-{
-	if (str == NULL)
-	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
-	}
-	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
+	list = malloc(sizeof(t_list));
+	if (!list)
+		return (NULL);
+	list->content = content;
+	list->next = NULL;
+	return (list);
 }

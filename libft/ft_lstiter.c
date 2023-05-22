@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almeliky <almeliky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 18:31:07 by almeliky          #+#    #+#             */
-/*   Updated: 2023/03/07 18:31:07 by almeliky         ###   ########.fr       */
+/*   Created: 2023/02/25 21:59:03 by almeliky          #+#    #+#             */
+/*   Updated: 2023/02/25 21:59:03 by almeliky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_print_char(int c)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	ft_putchar_fd(c, 1);
-	return (1);
-}
+	t_list	*node;
 
-int	ft_print_str(char *str)
-{
-	if (str == NULL)
+	while (lst)
 	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
+		node = lst->next;
+		f(lst->content);
+		lst = node;
 	}
-	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
 }

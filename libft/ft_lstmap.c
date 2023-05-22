@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almeliky <almeliky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 18:31:07 by almeliky          #+#    #+#             */
-/*   Updated: 2023/03/07 18:31:07 by almeliky         ###   ########.fr       */
+/*   Created: 2023/02/25 22:03:51 by almeliky          #+#    #+#             */
+/*   Updated: 2023/02/25 22:03:51 by almeliky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_print_char(int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	ft_putchar_fd(c, 1);
-	return (1);
-}
+	t_list	*reslist;
+	t_list	*node;
 
-int	ft_print_str(char *str)
-{
-	if (str == NULL)
+	reslist = NULL;
+	while (lst)
 	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
+		node = ft_lstnew(f(lst->content));
+		if (!node)
+		{
+			ft_lstclear(&reslist, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&reslist, node);
+		lst = lst->next;
 	}
-	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
+	return (reslist);
 }
